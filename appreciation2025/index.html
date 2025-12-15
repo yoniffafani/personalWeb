@@ -5,23 +5,52 @@
   <title>Terima Kasih 2025</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&family=Great+Vibes&display=swap" rel="stylesheet">
 
   <style>
     body {
       margin: 0;
-      padding: 0;
       font-family: 'Playfair Display', serif;
-      background: linear-gradient(
-        rgba(255,255,255,0.92),
-        rgba(255,255,255,0.92)
-      ),
-      url('https://images.unsplash.com/photo-1528459801416-a9e53bbf4e17');
+      background: #fdfcf8;
+      color: #6b5b2d;
+      overflow: hidden;
+    }
+
+    /* LOADING SCREEN */
+    #loading {
+      position: fixed;
+      inset: 0;
+      background: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 999;
+      flex-direction: column;
+    }
+
+    .loader {
+      width: 50px;
+      height: 50px;
+      border: 4px solid #e5d9a4;
+      border-top: 4px solid #d4af37;
+      border-radius: 50%;
+      animation: spin 1s linear infinite;
+      margin-bottom: 20px;
+    }
+
+    @keyframes spin {
+      to { transform: rotate(360deg); }
+    }
+
+    /* MAIN CONTENT */
+    #content {
+      display: none;
+      min-height: 100vh;
+      background:
+        linear-gradient(rgba(255,255,255,0.92), rgba(255,255,255,0.92)),
+        url("assets/images/bg.jpg");
       background-size: cover;
       background-position: center;
-      color: #6b5b2d;
-      text-align: center;
     }
 
     .container {
@@ -30,6 +59,7 @@
       align-items: center;
       justify-content: center;
       padding: 40px;
+      text-align: center;
     }
 
     .card {
@@ -37,106 +67,85 @@
       border: 2px solid #d4af37;
       padding: 50px 30px;
       max-width: 600px;
-      width: 100%;
       box-shadow: 0 10px 30px rgba(0,0,0,0.15);
     }
 
     h1 {
       font-family: 'Great Vibes', cursive;
       font-size: 48px;
-      margin-bottom: 10px;
       color: #bfa23a;
     }
 
-    h2 {
-      font-weight: 600;
-      margin-top: 0;
-      margin-bottom: 30px;
-    }
-
-    p {
-      font-size: 16px;
-      line-height: 1.8;
-      margin-bottom: 20px;
-    }
-
-    .quote {
-      font-style: italic;
-      color: #8c7b3f;
-      margin: 25px 0;
-    }
-
-    .gold-divider {
-      width: 120px;
+    .divider {
       height: 2px;
+      width: 120px;
       background: linear-gradient(to right, transparent, #d4af37, transparent);
       margin: 30px auto;
     }
 
     .btn {
-      display: inline-block;
       margin-top: 30px;
-      padding: 14px 28px;
+      padding: 14px 30px;
       background: linear-gradient(135deg, #d4af37, #f5e7a1);
-      color: #5a4a1f;
-      text-decoration: none;
-      font-weight: bold;
       border-radius: 30px;
-      transition: all 0.3s ease;
-    }
-
-    .btn:hover {
-      transform: scale(1.05);
-      box-shadow: 0 5px 15px rgba(0,0,0,0.2);
-    }
-
-    footer {
-      margin-top: 40px;
-      font-size: 12px;
-      color: #999;
+      color: #5a4a1f;
+      font-weight: bold;
+      text-decoration: none;
+      display: inline-block;
     }
   </style>
 </head>
 <body>
 
-  <!-- Background Music -->
-  <audio autoplay loop>
-    <!-- You can replace this with any calm classic music file -->
-    <source src="https://cdn.pixabay.com/audio/2022/03/15/audio_4c4a6b02fa.mp3" type="audio/mpeg">
-  </audio>
+<!-- LOADING -->
+<div id="loading">
+  <div class="loader"></div>
+  <p>Mempersiapkan undangan...</p>
+</div>
 
+<!-- AUDIO -->
+<audio id="bgMusic" loop>
+  <source src="assets/music/wedding.mp3" type="audio/mpeg">
+</audio>
+
+<!-- CONTENT -->
+<div id="content">
   <div class="container">
     <div class="card">
       <h1>Terima Kasih</h1>
-      <h2>Atas Kerjasamanya di Tahun 2025</h2>
+      <p>Atas kerjasamanya di tahun 2025</p>
 
-      <div class="gold-divider"></div>
+      <div class="divider"></div>
 
       <p>
-        Dengan penuh rasa syukur, kami mengucapkan terima kasih atas
-        kepercayaan, kolaborasi, dan kebersamaan yang terjalin sepanjang tahun 2025.
+        “Kerja sama yang hebat lahir dari kepercayaan dan konsistensi.”
       </p>
 
-      <p class="quote">
-        “Kerja sama yang baik bukan tentang siapa yang paling hebat,
-        tapi siapa yang paling saling percaya.”
+      <p>
+        “Kesuksesan bukan hasil satu orang, tapi tim yang solid.”
       </p>
 
-      <p class="quote">
-        “Kesuksesan besar selalu lahir dari tim yang solid.”
-      </p>
+      <div class="divider"></div>
 
-      <div class="gold-divider"></div>
-
-      <a class="btn" href="warning.html">
+      <a href="warning.html" class="btn">
         🎁 Click Here to Get a Gift
       </a>
-
-      <footer>
-        © 2025 • With Appreciation
-      </footer>
     </div>
   </div>
+</div>
+
+<script>
+  // Fake loading
+  setTimeout(() => {
+    document.getElementById('loading').style.display = 'none';
+    document.getElementById('content').style.display = 'block';
+  }, 2500);
+
+  // Autoplay after interaction
+  document.addEventListener('click', () => {
+    document.getElementById('bgMusic').play();
+  }, { once: true });
+</script>
 
 </body>
 </html>
