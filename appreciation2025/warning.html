@@ -116,6 +116,40 @@
   margin-top: 10px;
 }
 
+.training-box {
+  margin: 24px auto;
+  padding: 16px 18px;
+  max-width: 460px;
+
+  background: rgba(0, 0, 0, 0.15);
+  border: 1px solid rgba(255,255,255,0.25);
+  border-radius: 10px;
+
+  text-align: left; /* ⬅️ ini penting */
+}
+
+.list-title {
+  font-weight: bold;
+  margin: 0 0 10px;
+  text-align: center; /* judul tetap center */
+}
+
+.training-list {
+  padding-left: 22px;
+  margin: 0 0 10px;
+}
+
+.training-list li {
+  margin-bottom: 6px;
+  line-height: 1.4;
+}
+
+.note {
+  font-size: 13px;
+  opacity: 0.85;
+  text-align: center;
+}
+
   </style>
 </head>
 <body>
@@ -137,21 +171,23 @@
       Ambil training <strong>cybersecurity</strong> lagi.
     </p>
 
- <p class="list-title">
-  Yang sudah ambil training Cybersecurity:
-</p>
+<div class="training-box">
+  <p class="list-title">
+    Yang sudah ambil training Cybersecurity:
+  </p>
 
-<ol class="training-list" start="1">
-  <li>Wahyu</li>
-  <li>Dayat AC</li>
-  <li>Supri ledeng</li>
-  <li>dst...</li>
-</ol>
+  <ol class="training-list" start="1">
+    <li>Wahyu</li>
+    <li>Dayat AC</li>
+    <li>Supri ledeng</li>
+    <li>dst...</li>
+  </ol>
 
-<p class="note">
-  Yang sudah, tolong diisi ya teman-teman.<br>
-  Terima kasih.
-</p>
+  <p class="note">
+    Yang sudah, tolong diisi ya teman-teman.<br>
+    Terima kasih.
+  </p>
+</div>
 
   </div>
 
