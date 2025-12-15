@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <title>WARNING</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background: #c40000;
+      color: white;
+      font-family: Arial, sans-serif;
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+    }
+
+    .warning-box {
+      max-width: 500px;
+      padding: 30px;
+    }
+
+    .icon {
+      font-size: 100px;
+      margin-bottom: 20px;
+      animation: blink 1s infinite;
+    }
+
+    h1 {
+      font-size: 28px;
+      margin-bottom: 15px;
+    }
+
+    p {
+      font-size: 18px;
+      line-height: 1.6;
+    }
+
+    @keyframes blink {
+      0% { opacity: 1; }
+      50% { opacity: 0.3; }
+      100% { opacity: 1; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Warning Alarm Sound -->
+  <audio autoplay loop>
+    <source src="https://cdn.pixabay.com/audio/2021/08/04/audio_8bfaef8d0d.mp3" type="audio/mpeg">
+  </audio>
+
+  <div class="warning-box">
+    <div class="icon">⚠️</div>
+    <h1>PERINGATAN</h1>
+    <p>
+      Hayo jangan klik link sembarangan,<br>
+      ambil training <strong>cybersecurity</strong> lagi.
+    </p>
+  </div>
+
+</body>
+</html>
