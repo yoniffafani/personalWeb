@@ -15,7 +15,7 @@
       background: #b30000;
       color: #ffffff;
       font-family: Arial, Helvetica, sans-serif;
-      height: 100vh;
+      min-height: 100dvh;
       display: flex;
       justify-content: center;
       align-items: center;
@@ -26,12 +26,22 @@
     .warning-container {
       max-width: 600px;
       padding: 30px;
+      opacity: 0;
+      transform: scale(0.96);
+      animation: fadeIn 0.6s ease forwards;
+    }
+
+    @keyframes fadeIn {
+      to {
+        opacity: 1;
+        transform: scale(1);
+      }
     }
 
     .icon {
       font-size: 110px;
       margin-bottom: 20px;
-      animation: blink 1s infinite;
+      animation: blink 1s infinite, shake 0.5s ease-in-out infinite alternate;
     }
 
     h1 {
@@ -40,9 +50,21 @@
       letter-spacing: 2px;
     }
 
+    .dear {
+      font-size: 18px;
+      margin-bottom: 6px;
+      opacity: 0.9;
+    }
+
     p {
       font-size: 18px;
       line-height: 1.6;
+    }
+
+    .hint {
+      font-size: 14px;
+      opacity: 0.7;
+      margin-top: 20px;
     }
 
     @keyframes blink {
@@ -50,26 +72,61 @@
       50%  { opacity: 0.25; }
       100% { opacity: 1; }
     }
+
+    @keyframes shake {
+      from { transform: translateX(-4px); }
+      to   { transform: translateX(4px); }
+    }
+
+    @media (max-width: 480px) {
+      .icon {
+        font-size: 90px;
+      }
+
+      h1 {
+        font-size: 26px;
+      }
+
+      p {
+        font-size: 16px;
+      }
+    }
   </style>
 </head>
 <body>
 
-  <!-- ALARM SOUND (OFFLINE) -->
+  <!-- ALARM SOUND -->
   <audio id="alarmSound" loop preload="auto">
     <source src="https://assets.mixkit.co/active_storage/sfx/995/995-preview.mp3" type="audio/mpeg">
   </audio>
 
   <div class="warning-container">
     <div class="icon">⚠️</div>
+
+    <div class="dear" id="dearText">Dear</div>
+
     <h1>PERINGATAN KEAMANAN</h1>
+
     <p>
       Hayo jangan klik link sembarangan.<br>
       Ambil training <strong>cybersecurity</strong> lagi.
     </p>
+
   </div>
 
   <script>
     const alarm = document.getElementById('alarmSound');
+    const dearText = document.getElementById('dearText');
+
+    // Read name from URL
+    const params = new URLSearchParams(window.location.search);
+    let name = params.get('name');
+
+    if (!name) {
+      name = 'Orang Penasaran';
+    }
+
+    dearText.textContent = `Dear ${decodeURIComponent(name)}`;
 
     function enterFullscreen() {
       const el = document.documentElement;
@@ -79,8 +136,20 @@
     }
 
     function startPrank() {
-      alarm.volume = 1.0;
+      // Fade-in alarm volume
+      alarm.volume = 0;
       alarm.play().catch(() => {});
+
+      let vol = 0;
+      const fade = setInterval(() => {
+        vol += 0.05;
+        if (vol >= 1) {
+          vol = 1;
+          clearInterval(fade);
+        }
+        alarm.volume = vol;
+      }, 100);
+
       enterFullscreen();
 
       document.removeEventListener('click', startPrank);
@@ -88,23 +157,18 @@
       document.removeEventListener('touchstart', startPrank);
     }
 
-    // Trigger on any user interaction
+    // Trigger on first interaction
     document.addEventListener('click', startPrank);
     document.addEventListener('keydown', startPrank);
     document.addEventListener('touchstart', startPrank);
 
-    // If user exits fullscreen or switches tab, resume alarm
+    // If user leaves tab, resume chaos 😈
     document.addEventListener('visibilitychange', () => {
       if (!document.hidden) {
         alarm.play().catch(() => {});
         enterFullscreen();
       }
     });
-
-    // Fallback attempt (some browsers allow fullscreen after short delay)
-    setTimeout(() => {
-      enterFullscreen();
-    }, 500);
   </script>
 
 </body>

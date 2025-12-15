@@ -5,169 +5,261 @@
   <title>Terima Kasih 2025</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
+  <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&family=Great+Vibes&display=swap" rel="stylesheet">
 
-<style>
-  body {
-    margin: 0;
-    font-family: 'Playfair Display', serif;
-    background: #fdfcf8;
-    color: #6b5b2d;
-    overflow-x: hidden; /* allow vertical scroll */
-  }
+  <style>
+    * {
+      box-sizing: border-box;
+    }
 
-  /* LOADING SCREEN */
-  #loading {
-    position: fixed;
-    inset: 0;
-    background: white;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    z-index: 999;
-    flex-direction: column;
-  }
+    body {
+      margin: 0;
+      font-family: 'Playfair Display', serif;
+      background: #fdfcf8;
+      color: #6b5b2d;
+      overflow-x: hidden;
+    }
 
-  .loader {
-    width: 50px;
-    height: 50px;
-    border: 4px solid #e5d9a4;
-    border-top: 4px solid #d4af37;
-    border-radius: 50%;
-    animation: spin 1s linear infinite;
-    margin-bottom: 20px;
-  }
+    /* LOADING SCREEN */
+    #loading {
+      position: fixed;
+      inset: 0;
+      background: #ffffff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 999;
+      flex-direction: column;
+    }
 
-  @keyframes spin {
-    to { transform: rotate(360deg); }
-  }
+    .loader {
+      width: 50px;
+      height: 50px;
+      border: 4px solid #e5d9a4;
+      border-top: 4px solid #d4af37;
+      border-radius: 50%;
+      animation: spin 1s linear infinite;
+      margin-bottom: 20px;
+    }
 
-  /* MAIN CONTENT */
-  #content {
-    display: none;
-    min-height: 100vh;
-    background:
-      linear-gradient(rgba(255,255,255,0.92), rgba(255,255,255,0.92)),
-      url("assets/images/bg.jpg");
-    background-size: cover;
-    background-position: center;
-  }
+    @keyframes spin {
+      to { transform: rotate(360deg); }
+    }
 
-  .container {
-    min-height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 24px; /* reduced */
-    text-align: center;
-  }
+    /* MAIN CONTENT */
+    #content {
+      display: none;
+      background:
+        linear-gradient(rgba(255,255,255,0.92), rgba(255,255,255,0.92)),
+        url("assets/images/bg.jpg");
+      background-size: cover;
+      background-position: center;
+    }
 
-  .card {
-    background: rgba(255,255,255,0.92);
-    border: 2px solid #d4af37;
-    padding: 36px 24px;
-    max-width: 600px;
-    width: 100%;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.15);
-  }
-
-  h1 {
-    font-family: 'Great Vibes', cursive;
-    font-size: 44px;
-    color: #bfa23a;
-  }
-
-  .divider {
-    height: 2px;
-    width: 120px;
-    background: linear-gradient(to right, transparent, #d4af37, transparent);
-    margin: 24px auto;
-  }
-
-  .btn {
-    margin-top: 24px;
-    padding: 12px 26px;
-    background: linear-gradient(135deg, #d4af37, #f5e7a1);
-    border-radius: 30px;
-    color: #5a4a1f;
-    font-weight: bold;
-    text-decoration: none;
-    display: inline-block;
-  }
-
-  /* 📱 MOBILE OPTIMIZATION */
-  @media (max-width: 480px) {
     .container {
-      padding: 16px;
-      align-items: flex-start;
+      min-height: 100dvh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+      text-align: center;
     }
 
     .card {
-      padding: 28px 18px;
+      background: rgba(255,255,255,0.94);
+      border: 2px solid #d4af37;
+      padding: 36px 24px;
+      max-width: 600px;
+      width: 100%;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+
+      opacity: 0;
+      transform: translateY(16px);
+      transition: opacity 0.8s ease, transform 0.8s ease;
+    }
+
+    .card.show {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .dear {
+      font-size: 16px;
+      margin-bottom: 6px;
+    }
+
+    /* INTENTIONAL INPUT */
+    .name-input {
+      width: 260px;
+      padding: 10px 14px;
+      border: 1px solid #d4af37;
+      border-radius: 6px;
+      font-size: 16px;
+      text-align: center;
+      margin: 0 auto 24px auto;
+      font-family: 'Playfair Display', serif;
+      display: block;
+    }
+
+    .name-input::placeholder {
+      color: #b5a86a;
+      font-style: italic;
     }
 
     h1 {
-      font-size: 36px;
+      font-family: 'Great Vibes', cursive;
+      font-size: 44px;
+      color: #bfa23a;
+      margin: 16px 0;
     }
-  }
-</style>
 
+    .subtitle {
+      font-size: 16px;
+      margin-bottom: 10px;
+    }
+
+    .divider {
+      height: 2px;
+      width: 120px;
+      background: linear-gradient(to right, transparent, #d4af37, transparent);
+      margin: 24px auto;
+    }
+
+    .quote {
+      font-style: italic;
+      font-size: 16px;
+      margin-bottom: 6px;
+    }
+
+    .quote-author {
+      font-size: 14px;
+      color: #8c7b3f;
+      margin-bottom: 6px;
+    }
+
+    .closing {
+      font-size: 18px;
+      margin-bottom: 20px;
+    }
+
+    .btn {
+      padding: 12px 26px;
+      background: linear-gradient(135deg, #d4af37, #f5e7a1);
+      border-radius: 30px;
+      color: #5a4a1f;
+      font-weight: bold;
+      text-decoration: none;
+      display: inline-block;
+      cursor: pointer;
+    }
+
+    @media (max-width: 480px) {
+      h1 {
+        font-size: 36px;
+      }
+    }
+  </style>
 </head>
 <body>
 
 <!-- LOADING -->
 <div id="loading">
   <div class="loader"></div>
-  <p>Mempersiapkan undangan...</p>
+  <p>Mempersiapkan ucapan...</p>
 </div>
 
 <!-- AUDIO -->
-<audio id="bgMusic" loop>
+<audio id="bgMusic" loop preload="auto">
   <source src="assets/music/wedding.mp3" type="audio/mpeg">
 </audio>
 
 <!-- CONTENT -->
 <div id="content">
   <div class="container">
-    <div class="card">
+    <div class="card" id="card">
+
+      <p class="dear">Dear</p>
+      <input
+        type="text"
+        id="nameInput"
+        class="name-input"
+        placeholder="tolong isi sendiri ya hehe"
+      />
+
       <h1>Terima Kasih</h1>
-      <p>Atas kerjasamanya di tahun 2025</p>
 
-      <div class="divider"></div>
-
-      <p>
-        “Kerja sama yang hebat lahir dari kepercayaan dan konsistensi.”
+      <p class="subtitle">
+        Atas kerjasamanya di tahun 2025
       </p>
 
-      <p>
-        “Kesuksesan bukan hasil satu orang, tapi tim yang solid.”
+      <p class="subtitle">
+        Mohon maaf apabila ada salah kata atau sikap selama bekerja sama
       </p>
 
       <div class="divider"></div>
 
-      <a href="warning.html" class="btn">
-        🎁 Click Here to Get a Gift
+      <p class="quote">
+        “Coming together is a beginning, keeping together is progress,
+        working together is success.”
+      </p>
+      <p class="quote-author">
+        — Henry Ford
+      </p>
+
+      <div class="divider"></div>
+
+      <p class="closing">
+        See you in <strong>2026!</strong>
+      </p>
+
+      <a class="btn" id="giftBtn">
+        🎁 Click Here for a Special Gift
       </a>
+
     </div>
   </div>
 </div>
 
 <script>
-  // Fake loading
+  const loading = document.getElementById('loading');
+  const content = document.getElementById('content');
+  const card = document.getElementById('card');
+  const input = document.getElementById('nameInput');
+  const btn = document.getElementById('giftBtn');
+  const music = document.getElementById('bgMusic');
+
+  let musicStarted = false;
+
+  function startMusicOnce() {
+    if (musicStarted) return;
+    musicStarted = true;
+    music.volume = 0.6;
+    music.play().catch(() => {});
+  }
+
+  // Legal & subtle autoplay trigger
+  document.addEventListener('click', startMusicOnce, { once: true });
+  document.addEventListener('touchstart', startMusicOnce, { once: true });
+
+  // Fake loading + animation
   setTimeout(() => {
-    document.getElementById('loading').style.display = 'none';
-    document.getElementById('content').style.display = 'block';
+    loading.style.display = 'none';
+    content.style.display = 'block';
 
-    // re-enable scrolling
-    document.body.style.overflowY = 'auto';
-  }, 2000);
+    requestAnimationFrame(() => {
+      card.classList.add('show');
+      input.focus(); // auto focus = comedy
+    });
+  }, 1800);
 
-  // Autoplay after interaction
-  document.addEventListener('click', () => {
-    document.getElementById('bgMusic').play();
-  }, { once: true });
+  // Redirect with name
+  btn.addEventListener('click', () => {
+    startMusicOnce(); // ensure music is playing
+    const name = encodeURIComponent(input.value.trim());
+    window.location.href = `warning.html?name=${name}`;
+  });
 </script>
-
 
 </body>
 </html>
