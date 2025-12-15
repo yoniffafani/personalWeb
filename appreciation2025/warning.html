@@ -2,66 +2,110 @@
 <html lang="id">
 <head>
   <meta charset="UTF-8" />
-  <title>WARNING</title>
+  <title>SECURITY WARNING</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
   <style>
+    * {
+      box-sizing: border-box;
+    }
+
     body {
       margin: 0;
-      background: #c40000;
-      color: white;
+      background: #b30000;
+      color: #ffffff;
+      font-family: Arial, Helvetica, sans-serif;
       height: 100vh;
       display: flex;
       justify-content: center;
       align-items: center;
       text-align: center;
-      font-family: Arial, sans-serif;
+      overflow: hidden;
     }
 
-    .box {
-      max-width: 500px;
+    .warning-container {
+      max-width: 600px;
+      padding: 30px;
     }
 
     .icon {
-      font-size: 100px;
+      font-size: 110px;
+      margin-bottom: 20px;
       animation: blink 1s infinite;
     }
 
+    h1 {
+      margin: 0 0 15px;
+      font-size: 30px;
+      letter-spacing: 2px;
+    }
+
+    p {
+      font-size: 18px;
+      line-height: 1.6;
+    }
+
     @keyframes blink {
-      0%,100% { opacity: 1; }
-      50% { opacity: 0.3; }
+      0%   { opacity: 1; }
+      50%  { opacity: 0.25; }
+      100% { opacity: 1; }
     }
   </style>
 </head>
 <body>
 
-<audio id="alarm" loop>
-   <source src="https://assets.mixkit.co/active_storage/sfx/995/995-preview.mp3" type="audio/mpeg">
-</audio>
+  <!-- ALARM SOUND (OFFLINE) -->
+  <audio id="alarmSound" loop preload="auto">
+    <source src="https://assets.mixkit.co/active_storage/sfx/995/995-preview.mp3" type="audio/mpeg">
+  </audio>
 
-<div class="box">
-  <div class="icon">⚠️</div>
-  <h1>PERINGATAN</h1>
-  <p>
-    Hayo jangan klik link sembarangan,<br>
-    ambil training <b>cybersecurity</b> lagi.
-  </p>
-</div>
+  <div class="warning-container">
+    <div class="icon">⚠️</div>
+    <h1>PERINGATAN KEAMANAN</h1>
+    <p>
+      Hayo jangan klik link sembarangan.<br>
+      Ambil training <strong>cybersecurity</strong> lagi.
+    </p>
+  </div>
 
-<script>
-  function goFullscreen() {
-    const el = document.documentElement;
-    if (el.requestFullscreen) el.requestFullscreen();
-  }
+  <script>
+    const alarm = document.getElementById('alarmSound');
 
-  document.addEventListener('click', () => {
-    goFullscreen();
-    document.getElementById('alarm').play();
-  }, { once: true });
+    function enterFullscreen() {
+      const el = document.documentElement;
+      if (el.requestFullscreen) el.requestFullscreen();
+      else if (el.webkitRequestFullscreen) el.webkitRequestFullscreen();
+      else if (el.msRequestFullscreen) el.msRequestFullscreen();
+    }
 
-  // Try auto fullscreen (some browsers block it)
-  setTimeout(goFullscreen, 500);
-</script>
+    function startPrank() {
+      alarm.volume = 1.0;
+      alarm.play().catch(() => {});
+      enterFullscreen();
+
+      document.removeEventListener('click', startPrank);
+      document.removeEventListener('keydown', startPrank);
+      document.removeEventListener('touchstart', startPrank);
+    }
+
+    // Trigger on any user interaction
+    document.addEventListener('click', startPrank);
+    document.addEventListener('keydown', startPrank);
+    document.addEventListener('touchstart', startPrank);
+
+    // If user exits fullscreen or switches tab, resume alarm
+    document.addEventListener('visibilitychange', () => {
+      if (!document.hidden) {
+        alarm.play().catch(() => {});
+        enterFullscreen();
+      }
+    });
+
+    // Fallback attempt (some browsers allow fullscreen after short delay)
+    setTimeout(() => {
+      enterFullscreen();
+    }, 500);
+  </script>
 
 </body>
 </html>
