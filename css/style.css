@@ -315,3 +315,110 @@ h2 {
     .test-console { display: none; }
     h2 { font-size: 2rem; }
 }
+
+/* ===============================
+   INTERACTIVE LAB SECTION
+================================ */
+
+#interactive-lab {
+    margin-top: 120px;
+}
+
+#interactive-lab .lab-title {
+    color: #6cf;
+    border-color: #6cf;
+}
+
+#interactive-lab .lab-desc {
+    max-width: 600px;
+    color: #9bb;
+    margin-bottom: 40px;
+}
+
+/* Grid layout */
+.lab-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px;
+}
+
+/* Base tile */
+.lab-tile {
+    position: relative;
+    min-height: 200px;
+    padding: 24px;
+    font-family: var(--font-mono);
+    font-size: 0.85rem;
+}
+
+/* Active module */
+.lab-tile.active {
+    background: #0b1e2d;
+    border: 1px solid #2d5f7a;
+    color: #cfefff;
+    text-decoration: none;
+    overflow: hidden;
+}
+
+/* Active meta */
+.lab-meta {
+    font-size: 0.75rem;
+    color: #6cf;
+    margin-bottom: 8px;
+}
+
+/* Active name */
+.lab-name {
+    color: #fff;
+    margin-bottom: 10px;
+}
+
+/* Active description */
+.lab-text {
+    font-size: 0.9rem;
+    color: #b7d7e8;
+}
+
+/* Subtle preview effect */
+.lab-preview {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 55%;
+    height: 40%;
+    background:
+        linear-gradient(transparent 60%, rgba(0,0,0,.6)),
+        repeating-linear-gradient(
+            to right,
+            #6cf 0,
+            #6cf 2px,
+            transparent 2px,
+            transparent 6px
+        );
+    opacity: 0.15;
+}
+
+/* CTA */
+.lab-cta {
+    position: absolute;
+    bottom: 16px;
+    left: 24px;
+    font-size: 0.8rem;
+    color: #6cf;
+}
+
+/* Coming soon tiles */
+.lab-tile.coming-soon {
+    background: #0a141c;
+    border: 1px dashed #234;
+    color: #678;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+/* Hover effect (active only) */
+.lab-tile.active:hover {
+    border-color: #6cf;
+}

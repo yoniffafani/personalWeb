@@ -162,156 +162,49 @@
             </div>
         </section>
 
-        <section id="interactive-lab" style="margin-top: 120px;">
-            <h2 style="color:#6cf; border-color:#6cf;">
-                04. Interactive Lab
-            </h2>
+        <section id="interactive-lab">
+            <h2 class="lab-title">04. Interactive Lab</h2>
 
-            <p style="max-width:600px; color:#9bb; margin-bottom:30px;">
-                Experimental simulations and interactive artifacts.
-                Built to demonstrate decision-making, prioritization, and system thinking.
+            <p class="lab-desc">
+                Interactive experiments and simulations.
+                Built to demonstrate system thinking, prioritization,
+                and quality-driven decision making.
             </p>
 
-            <div style="
-                display: grid;
-                grid-template-columns: repeat(4, 1fr);
-                gap: 20px;
-            ">
+            <div class="lab-grid">
 
-                <!-- ACTIVE GAME TILE -->
-                <a href="/bugshooter" target="_blank"
-                style="
-                    grid-column: span 2;
-                    grid-row: span 2;
-                    background: #0b1e2d;
-                    border: 1px solid #2d5f7a;
-                    padding: 20px;
-                    text-decoration: none;
-                    color: #cfefff;
-                    position: relative;
-                    overflow: hidden;
-                ">
+                <!-- MODULE 01: ACTIVE -->
+                <a href="/bugshooter" target="_blank" class="lab-tile active">
+                    <div class="lab-meta">MODULE_01 · ACTIVE</div>
 
-                    <div style="
-                        font-family: var(--font-mono);
-                        font-size: 0.75rem;
-                        color: #6cf;
-                        margin-bottom: 8px;
-                    ">
-                        ACTIVE MODULE
-                    </div>
+                    <h3 class="lab-name">Regression Defender</h3>
 
-                    <h3 style="margin-bottom: 10px; color:#fff;">
-                        Regression Defender
-                    </h3>
-
-                    <p style="font-size: 0.9rem; color:#b7d7e8; max-width: 320px;">
+                    <p class="lab-text">
                         Arcade-style regression defense game.
                         Stop critical bugs before release.
                     </p>
 
-                    <!-- Fake game preview -->
-                    <div style="
-                        position: absolute;
-                        bottom: 0;
-                        right: 0;
-                        width: 65%;
-                        height: 45%;
-                        background:
-                        linear-gradient(transparent 60%, rgba(0,0,0,.6)),
-                        repeating-linear-gradient(
-                            to right,
-                            #6cf 0,
-                            #6cf 2px,
-                            transparent 2px,
-                            transparent 6px
-                        );
-                        opacity: 0.15;
-                    "></div>
+                    <div class="lab-preview"></div>
 
-                    <div style="
-                        position: absolute;
-                        bottom: 15px;
-                        left: 20px;
-                        font-family: var(--font-mono);
-                        font-size: 0.8rem;
-                        color: #6cf;
-                    ">
-                        ▶ LAUNCH SIMULATION
-                    </div>
+                    <div class="lab-cta">▶ LAUNCH</div>
                 </a>
 
-                <!-- COMING SOON TILES -->
-                <div style="
-                    background:#0a141c;
-                    border:1px dashed #234;
-                    padding:20px;
-                    color:#678;
-                    font-family: var(--font-mono);
-                    font-size:0.8rem;
-                ">
+                <!-- MODULE 02 -->
+                <div class="lab-tile coming-soon">
                     MODULE_02<br>COMING_SOON
                 </div>
 
-                <div style="
-                    background:#0a141c;
-                    border:1px dashed #234;
-                    padding:20px;
-                    color:#678;
-                    font-family: var(--font-mono);
-                    font-size:0.8rem;
-                ">
+                <!-- MODULE 03 -->
+                <div class="lab-tile coming-soon">
                     MODULE_03<br>COMING_SOON
                 </div>
 
-                <div style="
-                    background:#0a141c;
-                    border:1px dashed #234;
-                    padding:20px;
-                    color:#678;
-                    font-family: var(--font-mono);
-                    font-size:0.8rem;
-                ">
+                <!-- MODULE 04 -->
+                <div class="lab-tile coming-soon">
                     MODULE_04<br>COMING_SOON
                 </div>
-
-                <div style="
-                    background:#0a141c;
-                    border:1px dashed #234;
-                    padding:20px;
-                    color:#678;
-                    font-family: var(--font-mono);
-                    font-size:0.8rem;
-                ">
-                    MODULE_05<br>COMING_SOON
-                </div>
-
-                <div style="
-                    background:#0a141c;
-                    border:1px dashed #234;
-                    padding:20px;
-                    color:#678;
-                    font-family: var(--font-mono);
-                    font-size:0.8rem;
-                ">
-                    MODULE_06<br>COMING_SOON
-                </div>
-
-                <div style="
-                    background:#0a141c;
-                    border:1px dashed #234;
-                    padding:20px;
-                    color:#678;
-                    font-family: var(--font-mono);
-                    font-size:0.8rem;
-                ">
-                    MODULE_07<br>COMING_SOON
-                </div>
-
             </div>
         </section>
-
-
 
         <section id="contact">
             <h2>05. Terminate Process</h2>
